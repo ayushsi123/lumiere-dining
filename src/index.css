@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-primary: #D4AF37; /* Gold */
+  --color-bg-dark: #0A0A0B; /* Deep Obsidian Black */
+  --color-bg-card: #141416;
+  --color-bg-widget: #0F0F11;
+  --color-bg-footer: #080809;
+  --color-accent: #D4AF37;
+  --color-border: rgba(255, 255, 255, 0.1);
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased text-white bg-bg-dark;
+    overflow-x: hidden;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  html {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif italic;
+  }
+}
+
+@layer utilities {
+  .luxury-border {
+    @apply border border-border;
+  }
+  
+  .luxury-button {
+    @apply px-8 py-3 bg-white text-black text-[10px] uppercase font-bold tracking-widest transition-all hover:bg-primary hover:text-white active:scale-95;
+  }
+
+  .outline-button {
+    @apply px-8 py-3 bg-transparent border border-white/20 text-[10px] uppercase font-bold tracking-widest text-white hover:border-white transition-colors active:scale-95;
+  }
+
+  .gold-outline-button {
+    @apply px-6 py-2 border border-primary text-primary text-xs uppercase font-medium tracking-tighter hover:bg-primary hover:text-black transition-all;
+  }
+}
+
