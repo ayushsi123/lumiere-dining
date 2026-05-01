@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Package, CheckCircle2, Clock, Truck, ChefHat, MapPin } from 'lucide-react';
 import { OrderStatus as Status } from '../types';
+import SEO from '../components/SEO';
 import gsap from 'gsap';
 
 export default function OrderStatus() {
@@ -49,9 +50,23 @@ export default function OrderStatus() {
   ];
 
   return (
-    <div ref={containerRef} className="pt-32 md:pt-40 pb-20 bg-bg-dark min-h-screen text-white">
-      <div className="container mx-auto px-6 md:px-12 max-w-2xl pt-6 md:pt-10">
-        <div className="bg-bg-card rounded-sm shadow-2xl p-8 md:p-12 text-center border border-white/5 luxury-border status-card">
+    <div ref={containerRef} className="relative pt-32 md:pt-40 pb-20 bg-bg-dark min-h-screen text-white overflow-hidden">
+      <SEO 
+        title={`Order Status #${id}`} 
+        description={`Track your Lumière Dining order status for ${id}. Real-time updates on your gourmet meal.`}
+      />
+      {/* Background Image */}
+      <div className="fixed inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1600&auto=format&fit=crop" 
+          className="w-full h-full object-cover opacity-20"
+          alt="Background"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-dark via-bg-dark/80 to-transparent" />
+      </div>
+
+      <div className="container mx-auto px-10 md:px-12 max-w-2xl pt-6 md:pt-10 relative z-10">
+        <div className="bg-bg-card/40 backdrop-blur-md rounded-sm shadow-2xl p-8 md:p-12 text-center border border-white/10 luxury-border status-card">
           <motion.div 
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Calendar, Users, Clock, CheckCircle2 } from 'lucide-react';
+import SEO from '../components/SEO';
 import gsap from 'gsap';
 
 export default function Reservations() {
@@ -43,7 +44,11 @@ export default function Reservations() {
 
   return (
     <div ref={containerRef} className="pt-32 md:pt-40 pb-20 bg-bg-dark min-h-screen text-white">
-      <div className="container mx-auto px-6 md:px-12 max-w-4xl pt-6 md:pt-10">
+      <SEO 
+        title="Reserve a Table" 
+        description="Book your table at Lumière Dining. Join us for an evening of culinary excellence in Manhattan. Easy online booking for your next gourmet experience."
+      />
+      <div className="container mx-auto px-10 md:px-12 max-w-4xl pt-6 md:pt-10">
         <div className="text-center mb-16 res-title">
           <p className="text-primary uppercase tracking-[0.3em] text-[10px] mb-6 font-bold">
             Reserved For You
@@ -55,15 +60,32 @@ export default function Reservations() {
         </div>
 
         <div className="bg-bg-card rounded-sm shadow-2xl border border-white/5 overflow-hidden res-card">
-          <AnimatePresence mode="wait">
-            {step === 1 && (
-              <motion.div
-                key="step1"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                className="p-6 md:p-12 text-white"
-              >
+          <div className="grid lg:grid-cols-12 min-h-[600px]">
+            {/* Image Column */}
+            <div className="lg:col-span-5 relative hidden lg:block overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1000&auto=format&fit=crop" 
+                className="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-1000 hover:scale-110"
+                alt="Restaurant Ambiance"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-bg-card via-transparent to-transparent" />
+              <div className="absolute bottom-12 left-12 right-12">
+                <p className="text-primary uppercase tracking-[0.3em] text-[10px] mb-4 font-bold">The Experience</p>
+                <h3 className="text-3xl font-serif italic text-white leading-tight">Reserved for those who appreciate the finer things.</h3>
+              </div>
+            </div>
+
+            {/* Form Column */}
+            <div className="lg:col-span-7">
+              <AnimatePresence mode="wait">
+                {step === 1 && (
+                  <motion.div
+                    key="step1"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    className="p-8 md:p-16 text-white"
+                  >
                 <div className="grid md:grid-cols-3 gap-8 mb-10">
                   <div className="space-y-4">
                     <label className="flex items-center text-[10px] uppercase tracking-widest text-white/30 font-bold">
@@ -195,7 +217,9 @@ export default function Reservations() {
                 </button>
               </motion.div>
             )}
-          </AnimatePresence>
+              </AnimatePresence>
+            </div>
+          </div>
         </div>
 
         {/* Info */}

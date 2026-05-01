@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ShoppingBag, ChevronRight, Minus, Plus, Trash2, CreditCard } from 'lucide-react';
+import SEO from '../components/SEO';
 import gsap from 'gsap';
 import { useCart } from '../context/CartContext';
 import { MENU_ITEMS } from '../constants';
@@ -40,13 +41,29 @@ export default function Order() {
 
   return (
     <div ref={containerRef} className="pt-32 md:pt-40 pb-20 bg-bg-dark min-h-screen text-white overflow-x-hidden">
-      <div className="container mx-auto px-6 md:px-12 pt-6 md:pt-10">
+      <SEO 
+        title="Online Ordering" 
+        description="Bring the Lumière experience home. Order our gourmet dishes online for pickup or premium delivery. Experience culinary excellence anywhere."
+      />
+      {/* Hero Header */}
+      <section className="relative h-[40vh] mb-16 overflow-hidden flex items-center justify-center border-b border-white/5">
+        <img 
+          src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1600&auto=format&fit=crop" 
+          className="absolute inset-0 w-full h-full object-cover opacity-40"
+          alt="Hero"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-dark via-bg-dark/40 to-transparent" />
+        <div className="relative z-10 text-center">
+          <span className="text-primary uppercase tracking-[0.6em] text-[10px] mb-4 block font-bold">House Delicacies</span>
+          <h1 className="text-5xl md:text-8xl font-serif mb-6 italic">Order Online</h1>
+        </div>
+      </section>
+
+      <div className="container mx-auto px-10 md:px-12">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
           {/* Menu Selection (Left) */}
           <div className="lg:w-3/5 order-header">
             <div className="mb-16">
-              <span className="text-primary uppercase tracking-[0.4em] text-[10px] mb-6 block font-bold">House Delicacies</span>
-              <h1 className="text-4xl md:text-6xl font-serif mb-6 italic">Order Online</h1>
               <p className="text-white/40 text-sm uppercase tracking-widest leading-relaxed max-w-md">Bring the Lumiére experience to your home. Every dish is handled with the same precision as in our dining room.</p>
             </div>
 

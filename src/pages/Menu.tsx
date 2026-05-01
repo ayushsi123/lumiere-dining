@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MENU_ITEMS } from '../constants';
 import { cn } from '../lib/utils';
+import SEO from '../components/SEO';
 import { MenuItem } from '../types';
 import { useCart } from '../context/CartContext';
 
@@ -54,15 +55,26 @@ export default function Menu() {
 
   return (
     <div ref={containerRef} className="pt-32 md:pt-40 pb-20 bg-bg-dark min-h-screen">
+      <SEO 
+        title="Gourmet Menu" 
+        description="Explore our meticulously crafted menu featuring Truffle Scallops, A5 Miyazaki Wagyu, and more. Sourced with precision, crafted with passion."
+      />
       {/* Header */}
-      <section className="container mx-auto px-6 md:px-12 mb-12 md:mb-16 pt-10">
-        <div className="text-center max-w-3xl mx-auto mb-20 menu-header">
-          <p className="text-primary uppercase tracking-[0.4em] text-[10px] mb-6 font-bold">
-            Sourced with Precision
-          </p>
-          <h1 className="text-5xl md:text-8xl font-serif mb-8 md:mb-12 italic">
-            The Menu
-          </h1>
+      <section className="relative pt-20 pb-32 mb-12 md:mb-16 overflow-hidden border-b border-white/5">
+        <img 
+          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop" 
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
+          alt="Menu Header"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-dark via-bg-dark/40 to-transparent" />
+        <div className="container mx-auto px-10 md:px-12 relative z-10">
+          <div className="text-center max-w-3xl mx-auto menu-header">
+            <p className="text-primary uppercase tracking-[0.4em] text-[10px] mb-6 font-bold">
+              Sourced with Precision
+            </p>
+            <h1 className="text-5xl md:text-8xl font-serif mb-8 md:mb-12 italic">
+              The Menu
+            </h1>
           <div className="relative max-w-xl mx-auto">
             <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-white/20" size={18} />
             <input 
@@ -73,8 +85,12 @@ export default function Menu() {
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
+          </div>
         </div>
+      </section>
 
+      {/* Content */}
+      <section className="container mx-auto px-10 md:px-12">
         {/* Categories */}
         <div className="flex flex-wrap items-center justify-center gap-4 md:gap-10 mb-12 md:mb-24">
           {categories.map((cat) => (

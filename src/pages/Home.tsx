@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronRight, Star, Clock, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -72,10 +73,14 @@ export default function Home() {
 
   return (
     <div ref={containerRef} className="overflow-hidden bg-bg-dark pt-24 md:pt-32">
+      <SEO 
+        title="Lumière Dining | Fine Dining Experience in Manhattan" 
+        description="Experience the pinnacle of fine dining at Lumière. Sourced with precision, crafted with passion. Join us for a journey of culinary excellence in the heart of Manhattan."
+      />
       {/* Refined Hero Section */}
       <section className="relative min-h-[90vh] flex flex-col lg:grid lg:grid-cols-12 border-b border-white/10">
         {/* Left Branding Column */}
-        <div className="lg:col-span-5 px-6 py-16 lg:p-24 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-white/10 hero-content">
+        <div className="lg:col-span-5 px-10 py-16 lg:p-24 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-white/10 hero-content">
           <span className="text-primary uppercase tracking-[0.4em] text-[10px] mb-6 font-semibold">
             EST. 1994 • Manhattan, NY
           </span>
@@ -104,9 +109,9 @@ export default function Home() {
           <div className="flex-grow grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10">
             <div className="relative group overflow-hidden bg-bg-card gallery-item">
               <img 
-                src="https://images.unsplash.com/photo-1546241072-48010ad28c2c?q=80&w=800&auto=format&fit=crop" 
+                src="/assets/scallops.png" 
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-70"
-                alt="Wagyu Ribeye"
+                alt="Wild Atlantic Halibut"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/90 via-transparent to-transparent flex flex-col justify-end p-8 md:p-12">
                 <p className="text-[10px] text-primary uppercase tracking-[0.3em] mb-2 font-bold italic">Signature Item</p>
@@ -152,7 +157,7 @@ export default function Home() {
 
       {/* Stats/Philosophy Section Refined */}
       <section className="py-20 md:py-40 bg-bg-dark">
-        <div className="container mx-auto px-6 md:px-12">
+        <div className="container mx-auto px-10 md:px-12">
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-32 items-center">
             <div className="relative parallax-container">
               <div className="aspect-[4/5] overflow-hidden rounded-sm">
@@ -192,7 +197,7 @@ export default function Home() {
 
       {/* Featured Items / Marquee feel */}
       <section className="bg-bg-dark py-32 overflow-hidden">
-        <div className="container mx-auto px-6 mb-12 md:mb-16">
+        <div className="container mx-auto px-10 mb-12 md:mb-16">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <h2 className="text-4xl md:text-5xl text-white font-serif">Seasonal<br className="hidden md:block" /> Masterpieces</h2>
             <Link to="/menu" className="text-primary uppercase tracking-[0.2em] text-sm hover:translate-x-2 transition-transform flex items-center">
@@ -202,52 +207,62 @@ export default function Home() {
         </div>
         
         {/* Horizontal Scroll Area */}
-        <div className="flex space-x-8 px-6 overflow-x-auto pb-12 hide-scrollbar snap-x snap-mandatory">
+        <div className="flex space-x-8 overflow-x-auto pb-12 snap-x snap-mandatory px-10 scroll-pl-10">
+          {/* Spacer for left padding in scroll */}
+          <div className="min-w-[40px] md:hidden flex-shrink-0" />
+          
           {[1, 2, 3, 4].map((i) => (
             <div key={i} className="min-w-[300px] md:min-w-[450px] group snap-start">
               <div className="aspect-[4/5] overflow-hidden mb-6">
                 <img 
-                  src={`https://images.unsplash.com/photo-${i === 1 ? '1546241072-48010ad28c2c' : i === 2 ? '1599487488170-d11ec9c173f0' : i === 3 ? '1533682805518-48d1f5b8cd3a' : '1551024506-0bccd828d307'}?q=80&w=800&auto=format&fit=crop`} 
+                  src={i === 1 ? '/assets/wagyu.png' : i === 2 ? '/assets/beets.png' : i === 3 ? '/assets/lobster.png' : '/assets/chocolate.png'} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   alt={`Dish ${i}`}
                 />
               </div>
-              <h3 className="text-white text-2xl font-serif mb-2">Signature Dish Collection</h3>
-              <p className="text-primary font-serif">Starting from $28</p>
+              <h3 className="text-white text-2xl font-serif mb-2 italic">Signature Dish Collection</h3>
+              <p className="text-primary font-serif italic text-sm">Starting from $28</p>
             </div>
           ))}
+          {/* Spacer for right padding in scroll */}
+          <div className="min-w-[32px] md:min-w-[48px] h-full flex-shrink-0" />
         </div>
       </section>
 
       {/* Quick Info Bar */}
-      <section className="py-16 md:py-20 border-y border-white/5 reveal">
-        <div className="container mx-auto px-6">
+      <section className="relative py-16 md:py-24 border-y border-white/5 reveal overflow-hidden">
+        <img 
+          src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1600&auto=format&fit=crop" 
+          className="absolute inset-0 w-full h-full object-cover opacity-10"
+          alt="Background"
+        />
+        <div className="container mx-auto px-10 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12">
-            <div className="flex items-center space-x-6">
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+            <div className="flex items-center space-x-6 group">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-bg-dark transition-all duration-500 shadow-[0_0_15px_rgba(212,175,55,0.2)]">
                 <MapPin size={24} />
               </div>
               <div>
-                <h4 className="font-serif text-xl">Visit Us</h4>
-                <p className="text-white/40 font-light">123 Culinary Ave, NYC</p>
+                <h4 className="font-serif text-xl italic">Visit Us</h4>
+                <p className="text-white/40 font-light text-[10px] uppercase tracking-widest mt-1">123 Culinary Ave, NYC</p>
               </div>
             </div>
-            <div className="flex items-center space-x-6">
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+            <div className="flex items-center space-x-6 group">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-bg-dark transition-all duration-500 shadow-[0_0_15px_rgba(212,175,55,0.2)]">
                 <Clock size={24} />
               </div>
               <div>
-                <h4 className="font-serif text-xl">Opening Hours</h4>
-                <p className="text-white/40 font-light">Tue - Sun, 5pm - 11pm</p>
+                <h4 className="font-serif text-xl italic">Opening Hours</h4>
+                <p className="text-white/40 font-light text-[10px] uppercase tracking-widest mt-1">Tue - Sun, 5pm - 11pm</p>
               </div>
             </div>
-            <div className="flex items-center space-x-6">
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+            <div className="flex items-center space-x-6 group">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-bg-dark transition-all duration-500 shadow-[0_0_15px_rgba(212,175,55,0.2)]">
                 <Star size={24} />
               </div>
               <div>
-                <h4 className="font-serif text-xl">Reservations</h4>
-                <p className="text-white/40 font-light">Highly Recommended</p>
+                <h4 className="font-serif text-xl italic">Reservations</h4>
+                <p className="text-white/40 font-light text-[10px] uppercase tracking-widest mt-1">Highly Recommended</p>
               </div>
             </div>
           </div>

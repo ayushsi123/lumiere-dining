@@ -40,7 +40,7 @@ export default function Navbar() {
         isScrolled ? 'bg-bg-dark/95 backdrop-blur-md py-6' : 'bg-transparent text-white'
       )}
     >
-      <div className="container mx-auto px-12 flex items-center justify-between">
+      <div className="container mx-auto px-10 lg:px-12 flex items-center justify-between">
         {/* Logo */}
         <Link 
           to="/" 

@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { GALLERY_IMAGES } from '../constants';
 import { cn } from '../lib/utils';
+import SEO from '../components/SEO';
 import { X } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -45,14 +46,30 @@ export default function Gallery() {
 
   return (
     <div ref={containerRef} className="pt-32 md:pt-40 pb-20 bg-bg-dark min-h-screen text-white">
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="text-center mb-10 md:mb-20 pt-10 gallery-title">
+      <SEO 
+        title="Visual Gallery" 
+        description="A visual journey through Lumière Dining. Explore our culinary masterpieces, elegant ambiance, and impeccable service through our curated gallery."
+      />
+      {/* Hero Header */}
+      <section className="relative pt-20 pb-32 mb-12 md:mb-20 overflow-hidden border-b border-white/5">
+        <img 
+          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop" 
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
+          alt="Gallery Header"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-dark via-bg-dark/40 to-transparent" />
+        <div className="container mx-auto px-10 md:px-12 relative z-10 text-center gallery-title">
           <p className="text-primary uppercase tracking-[0.4em] text-[10px] mb-6 font-bold">
             Visual Journey
           </p>
           <h1 className="text-5xl md:text-8xl font-serif mb-8 md:mb-12 italic">
             The Gallery
           </h1>
+        </div>
+      </section>
+
+      <div className="container mx-auto px-10 md:px-12">
+        <div className="text-center mb-10 md:mb-20 pt-10">
 
           <div className="flex flex-wrap justify-center gap-4 md:gap-12 mb-10 md:mb-20">
             {categories.map(cat => (
